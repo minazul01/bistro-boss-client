@@ -13,7 +13,9 @@ const PageCover = ({ img, title, subTitle }) => {
         <div className="hero-content text-neutral-content text-center">
           <div className="">
             <h1 className="mb-5 text-[2rem] font-bold uppercase">{title}</h1>
-            <p className="mb-5 w-full md:w-1/2 mx-auto">{subTitle}</p>
+            <p className="mb-5 w-full max-w-[90%] md:max-w-[80%] lg:max-w-[60%] text-sm md:text-base text-center mx-auto px-2 md:px-4">
+              {subTitle}
+            </p>
           </div>
         </div>
       </div>

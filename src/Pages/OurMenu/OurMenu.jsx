@@ -9,6 +9,8 @@ import soupImg from "../../assets/menu/soup-bg.jpg";
 import drinkImg from "../../assets/menu/banner3.jpg";
 import Title from "../../Component/ShareTitle/Title";
 import UseMenu from "../../Hooks/UseMenu";
+import { Link } from "react-router-dom";
+import { title } from "framer-motion/client";
 
 const OurMenu = () => {
   // all menu item filter category
@@ -78,10 +80,10 @@ const OurMenu = () => {
                   </div>
                 ))}
               </div>
-              <div className="w-full text-center">
-                <button className="py-2 px-4 bg-white border-b-2 rounded-md uppercase text-black hover:text-yellow-300 mb-10 hover:bg-black cursor-pointer">
-                  ORDER YOUR FAVOURITE FOOD
-                </button>
+              <div className="w-full text-center mb-10">
+                <Link to={`/our_shop/${'salad'}`} className="py-2 px-4 bg-white border-b-2 rounded-md uppercase text-black hover:text-yellow-300 hover:bg-black cursor-pointer">
+                  ORDER YOUR FAVORITE FOOD
+                </Link>
               </div>
             </>
           ) : (
@@ -95,7 +97,7 @@ const OurMenu = () => {
       <div className="container mx-auto px-10">
         <PageCover
           img={desertImg}
-          title={"DESSERTS"}
+          title={"desserts"}
           subTitle={
             "Indulge in our irresistible selection of handcrafted desserts — from creamy cheesecakes to rich chocolate delights, each bite is a sweet escape. Perfectly baked to satisfy every craving."
           }
@@ -139,10 +141,10 @@ const OurMenu = () => {
                   </div>
                 ))}
               </div>
-              <div className="w-full text-center">
-                <button className="py-2 px-4 bg-white border-b-2 rounded-md uppercase text-black hover:text-yellow-300 mb-10 hover:bg-black cursor-pointer">
+              <div className="w-full text-center mb-10">
+                <Link to={`/our_shop/${'dessert'}`} className="py-2 px-4 bg-white border-b-2 rounded-md uppercase text-black hover:text-yellow-300 mb-10 hover:bg-black cursor-pointer">
                   ORDER YOUR FAVORITE FOOD
-                </button>
+                </Link>
               </div>
             </>
           ) : (
@@ -156,7 +158,7 @@ const OurMenu = () => {
       <div className="container mx-auto px-10">
         <PageCover
           img={pizzaImg}
-          title={"PIZZA"}
+          title={"pizza"}
           subTitle={
             "Indulge in our irresistible selection of handcrafted desserts — from creamy cheesecakes to rich chocolate delights, each bite is a sweet escape. Perfectly baked to satisfy every craving."
           }
@@ -200,10 +202,10 @@ const OurMenu = () => {
                   </div>
                 ))}
               </div>
-              <div className="w-full text-center">
-                <button className="py-2 px-4 bg-white border-b-2 rounded-md uppercase text-black hover:text-yellow-300 mb-10 hover:bg-black cursor-pointer">
+              <div className="w-full text-center mb-10">
+                <Link to={`/our_shop/${'pizza'}`} className="py-2 px-4 bg-white border-b-2 rounded-md uppercase text-black hover:text-yellow-300 mb-10 hover:bg-black cursor-pointer">
                  ORDER YOUR FAVORITE FOOD
-                </button>
+                </Link>
               </div>
             </>
           ) : (
@@ -217,7 +219,7 @@ const OurMenu = () => {
       <div className="container mx-auto px-10">
         <PageCover
           img={saladImg}
-          title={"SALADS"}
+          title={"salads"}
           subTitle={
             "Indulge in our irresistible selection of handcrafted desserts — from creamy cheesecakes to rich chocolate delights, each bite is a sweet escape. Perfectly baked to satisfy every craving."
           }
@@ -261,10 +263,10 @@ const OurMenu = () => {
                   </div>
                 ))}
               </div>
-              <div className="w-full text-center">
-                <button className="py-2 px-4 bg-white border-b-2 rounded-md uppercase text-black hover:text-yellow-300 mb-10 hover:bg-black cursor-pointer">
+              <div className="w-full text-center mb-10">
+                <Link to={`/our_shop/${'salad'}`} className="py-2 px-4 bg-white border-b-2 rounded-md uppercase text-black hover:text-yellow-300 mb-10 hover:bg-black cursor-pointer">
                  ORDER YOUR FAVORITE FOOD
-                </button>
+                </Link>
               </div>
             </>
           ) : (
@@ -322,10 +324,10 @@ const OurMenu = () => {
                   </div>
                 ))}
               </div>
-              <div className="w-full text-center">
-                <button className="py-2 px-4 bg-white border-b-2 rounded-md uppercase text-black hover:text-yellow-300 mb-10 hover:bg-black cursor-pointer">
+              <div className="w-full text-center mb-10">
+                <Link to={`/our_shop/${'soup'}`} className="py-2 px-4 bg-white border-b-2 rounded-md uppercase text-black hover:text-yellow-300 mb-10 hover:bg-black cursor-pointer">
                  ORDER YOUR FAVORITE FOOD
-                </button>
+                </Link>
               </div>
             </>
           ) : (
@@ -383,10 +385,10 @@ const OurMenu = () => {
                   </div>
                 ))}
               </div>
-              <div className="w-full text-center">
-                <button className="py-2 px-4 bg-white border-b-2 rounded-md uppercase text-black hover:text-yellow-300 mb-10 hover:bg-black cursor-pointer">
+              <div className="w-full text-center mb-10">
+                <Link to={`/our_shop/${'drinks'}`} className="py-2 px-4 bg-white border-b-2 rounded-md uppercase text-black hover:text-yellow-300 mb-10 hover:bg-black cursor-pointer">
                  ORDER YOUR FAVORITE FOOD
-                </button>
+                </Link>
               </div>
             </>
           ) : (

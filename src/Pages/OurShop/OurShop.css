@@ -1,0 +1,6 @@
+.react-tabs__tab--selected {
+  border-bottom: 2px solid #facc15; /* Tailwind yellow-400 */
+  color: #facc15;
+  font-weight: bold;
+  border: underline;
+}

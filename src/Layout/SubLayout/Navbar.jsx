@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 
 const pages = [
@@ -8,9 +7,12 @@ const pages = [
   <li key="menu">
     <Link to="/our_menu">Our-Menu</Link>
   </li>,
+  <li key="shop">
+    <Link to="/our_shop/salad">our-shop</Link>
+  </li>,
   <li key="contact">
     <Link to="/contact_us">Contact</Link>
-  </li>
+  </li>,
 ];
 
 const Navbar = () => {
@@ -65,7 +67,9 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 text-white uppercase">{pages}</ul>
+          <ul className="menu menu-horizontal px-1 text-white uppercase">
+            {pages}
+          </ul>
         </div>
 
         {/* Call to Action Button */}
