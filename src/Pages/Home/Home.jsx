@@ -13,16 +13,14 @@ const Home = () => {
       <Helmet>
         <title>bistro boss | Home</title>
       </Helmet>
-      <Banner />
-      <div className="max-w-10/12 mx-auto">
+        <Banner />
+      <div className="container mx-auto">
         <Category />
         <SubCategory />
         <Popular />
         <Salad />
-      </div>
-      <OurMenu />
-      <div className="max-w-10/12 mx-auto">
-         <Rating />
+        <OurMenu />
+        <Rating />
       </div>
     </div>
   );

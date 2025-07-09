@@ -6,7 +6,7 @@ const pages = [
     <Link to="/">Home</Link>
   </li>,
   <li key="menu">
-    <Link to="/our_menu">Menu</Link>
+    <Link to="/our_menu">Our-Menu</Link>
   </li>,
   <li key="contact">
     <Link to="/contact_us">Contact</Link>
@@ -25,6 +25,7 @@ const Navbar = () => {
           text-white
           px-5 py-2
           rounded-4xl
+          my-4
         "
       >
         {/* Mobile Hamburger + Logo */}
@@ -51,7 +52,7 @@ const Navbar = () => {
               className="
                 menu menu-sm dropdown-content
                 bg-base-100 text-black
-                rounded-box mt-3 w-52 p-2 shadow
+                rounded-box mt-3 w-52 p-2 shadow uppercase
               "
             >
               {pages}
@@ -64,7 +65,7 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 text-white">{pages}</ul>
+          <ul className="menu menu-horizontal px-1 text-white uppercase">{pages}</ul>
         </div>
 
         {/* Call to Action Button */}
