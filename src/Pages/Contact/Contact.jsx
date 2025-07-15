@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
+
 
 
 const Contact = () => {
@@ -7,6 +9,9 @@ const Contact = () => {
   }, []);
   return (
     <div>
+      <Helmet>
+        <title>Bistro Boss | Contact</title>
+      </Helmet>
       hello contact!!
     </div>
   );

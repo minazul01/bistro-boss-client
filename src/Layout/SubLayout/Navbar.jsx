@@ -1,29 +1,104 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink, useParams } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider/Provider";
+import { FaShoppingCart } from "react-icons/fa";
+import useCards from "../../Hooks/useCards";
 
-const pages = [
-  <li key="home">
-    <Link to="/">Home</Link>
-  </li>,
-  <li key="menu">
-    <Link to="/our_menu">Our-Menu</Link>
-  </li>,
-  <li key="shop">
-    <Link to="/our_shop/salad">our-shop</Link>
-  </li>,
-  <li key="contact">
-    <Link to="/contact_us">Contact</Link>
-  </li>,
-];
+
 
 const Navbar = () => {
+  const [card] = useCards();
+
+  const { user, logOutUser } = useContext(AuthContext);
+
+  const pages = [
+    <li key="home">
+      <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? "text-lime-500 underline underline-offset-8 font-bold"
+            : "hover:text-lime-400"
+        }
+        to="/"
+      >
+        Home
+      </NavLink>
+    </li>,
+    <li key="menu">
+      <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? "text-lime-500 underline underline-offset-8 font-bold"
+            : "hover:text-lime-400"
+        }
+        to="/our_menu"
+      >
+        Our-Menu
+      </NavLink>
+    </li>,
+    <li key="shop">
+      <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? "text-lime-500 underline underline-offset-8 font-bold"
+            : "hover:text-lime-400"
+        }
+        to="/our_shop"
+      >
+        our-shop
+      </NavLink>
+    </li>,
+    <li key="contact">
+      <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? "text-lime-500 underline underline-offset-8 font-bold"
+            : "hover:text-lime-400"
+        }
+        to="/contact_us"
+      >
+        Contact
+      </NavLink>
+    </li>,
+    // <li key="dashboard">
+    //   <NavLink
+    //     className={({ isActive }) =>
+    //       isActive
+    //         ? "text-lime-500 underline underline-offset-8 font-bold"
+    //         : "hover:text-lime-400"
+    //     }
+    //     to="/dashboard"
+    //   >
+    //     Dashboard
+    //   </NavLink>
+    // </li>,
+    <li className="relative">
+      <Link
+        to="/dashboard"
+        className={({ isActive }) =>
+          isActive
+            ? "text-lime-500 underline underline-offset-8 font-bold"
+            : "hover:text-lime-400"
+        }
+      >
+        {/* Cart Icon */}
+        <div className="relative w-6 h-6 md:w-8 md:h-8 flex items-center justify-center">
+          <FaShoppingCart className="text-xl md:text-2xl" />
+          {/* Badge */}
+          <span className="badge badge-sm badge-secondary absolute -top-0.5 -right-4 text-xs">
+           +{card?.length}
+          </span>
+        </div>
+      </Link>
+    </li>,
+  ];
   return (
-    <div className="fixed top-0 left-0 w-full z-10">
+    <div className="fixed top-0 left-0 w-full z-10 ">
       <div
         className="
           max-w-[1300px] mx-auto
           navbar
-          bg-white/20           
-          backdrop-blur-md     
+         bg-black/30
           text-white
           px-5 py-2
           rounded-4xl
@@ -67,16 +142,27 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 text-white uppercase">
+          <ul className="items-center menu menu-horizontal px-1 text-white uppercase">
             {pages}
           </ul>
         </div>
 
         {/* Call to Action Button */}
         <div className="navbar-end">
-          <a href="#" className="btn bg-primary text-white">
-            Order Now
-          </a>
+          {user ? (
+            <>
+              <button
+                onClick={logOutUser}
+                className="btn bg-primary text-white"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link className="btn bg-primary text-white" to={"/login"}>
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>
