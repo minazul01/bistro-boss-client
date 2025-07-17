@@ -9,6 +9,7 @@ import {
 import { AuthContext } from "../../Context/AuthProvider/Provider";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Login = () => {
   const location = useLocation();
@@ -16,7 +17,7 @@ const Login = () => {
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
   console.log(location.state)
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, googleLogin } = useContext(AuthContext);
   // disable login btn
   const [disabled, setDisabled] = useState(true);
   // captcha number
@@ -56,6 +57,29 @@ const Login = () => {
       setDisabled(true);
     }
   };
+
+
+  const axiosPublic = useAxiosPublic();
+  // google login
+  const handleGoogleLogin = () => {
+       googleLogin()
+       .then((result) => {
+        console.log('user added',result.user)
+        const userInfo = {
+          name: result?.user?.displayName,
+          email: result?.user?.email
+        };
+        axiosPublic.post('/users', userInfo)
+        .then(res => {
+           console.log(res.data);
+        })
+       });
+       navigate('/')
+  }
+
+
+
+
   return (
     <div
       style={{ backgroundImage: `url(${background})` }}
@@ -138,7 +162,7 @@ const Login = () => {
             <div className="text-center mt-6">
               <p className="text-gray-600 mb-3">Or login with</p>
               <div className="flex justify-center gap-4">
-                <button className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition text-sm">
+                <button onClick={handleGoogleLogin} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition text-sm">
                   Google
                 </button>
                 <button className="bg-blue-800 text-white px-4 py-2 rounded hover:bg-blue-900 transition text-sm">

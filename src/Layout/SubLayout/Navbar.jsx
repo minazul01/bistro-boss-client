@@ -12,7 +12,7 @@ const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
 
   const pages = [
-    <li key="home">
+    <li>
       <NavLink
         className={({ isActive }) =>
           isActive
@@ -24,7 +24,7 @@ const Navbar = () => {
         Home
       </NavLink>
     </li>,
-    <li key="menu">
+    <li>
       <NavLink
         className={({ isActive }) =>
           isActive
@@ -36,7 +36,7 @@ const Navbar = () => {
         Our-Menu
       </NavLink>
     </li>,
-    <li key="shop">
+    <li>
       <NavLink
         className={({ isActive }) =>
           isActive
@@ -48,7 +48,7 @@ const Navbar = () => {
         our-shop
       </NavLink>
     </li>,
-    <li key="contact">
+    <li>
       <NavLink
         className={({ isActive }) =>
           isActive
@@ -60,7 +60,7 @@ const Navbar = () => {
         Contact
       </NavLink>
     </li>,
-    // <li key="dashboard">
+    // <li>
     //   <NavLink
     //     className={({ isActive }) =>
     //       isActive

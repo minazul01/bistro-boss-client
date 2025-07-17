@@ -1,12 +1,13 @@
-
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import useAdmin from "../../../Hooks/useAdmin";
 
-const Private = ({ children }) => {
+const PrivateAdmin = ({children}) => {
+    const [isAdmin, isAdminLoading] = useAdmin();
   const { user, loading } = useAuth();
   const location = useLocation();
 
-  if (loading) {
+  if (loading || isAdminLoading) {
     return (
       <div className="h-screen flex justify-center items-center">
         <div className="w-10 h-10 animate-spin rounded-full border-dashed border-8 border-[#3b9df8]"></div>
@@ -14,10 +15,10 @@ const Private = ({ children }) => {
     );
   }
 
-  if (user) {
+  if (user && isAdmin) {
     return children;
   }
-  return <Navigate to={"/login"} state={{ from: location }} replace></Navigate>;
+  return <Navigate to={"/"} state={{ from: location }} replace></Navigate>;
 };
 
-export default Private;
+export default PrivateAdmin;

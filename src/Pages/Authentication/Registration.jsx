@@ -4,10 +4,12 @@ import background from "../../assets/reservation/background.png";
 import { AuthContext } from "../../Context/AuthProvider/Provider";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Registration = () => {
-  const [error, setError] = useState('');
-  const { signUpUser } = useContext(AuthContext);
+  const axiosPublic = useAxiosPublic();
+  const [error, setError] = useState("");
+  const { signUpUser, updateUser, googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
@@ -17,6 +19,8 @@ const Registration = () => {
     const email = form.email.value;
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
+    const photo = form.photo.value;
+    console.log(name, photo);
     // console.log(name, email, password, confirmPassword);
     if (password !== confirmPassword) {
       return alert("Passwords do not match");
@@ -28,18 +32,49 @@ const Registration = () => {
         "Password must be at least 6 characters long and include at least one uppercase letter, one lowercase letter, and one special character."
       );
     }
+
     signUpUser(email, password).then((userCredential) => {
       const user = userCredential.user;
       console.log(user);
-      Swal.fire({
-        title: "Drag me!",
-        icon: "success",
-        draggable: true,
+      updateUser(name, photo).then(() => {
+        const userInfo = {
+          email: email,
+          name: name,
+        };
+        axiosPublic.post("/users", userInfo).then((res) => {
+          if (res.data.insertedId) {
+            console.log('user added to the database')
+            Swal.fire({
+              title: "Drag me!",
+              icon: "success",
+              draggable: true,
+            });
+            navigate("/");
+          }
+        });
       });
-
-      navigate("/");
     });
   };
+
+
+  const handleGoogleLogin = () => {
+        googleLogin()
+        .then((result) => {
+        
+          const userInfo = {
+            name: result.user.displayName,
+            email: result.user.email
+          }
+         axiosPublic.post('/users', userInfo)
+         .then(res => {
+          console.log(res.data)
+         })
+        });
+        navigate('/')
+  };
+
+
+
 
   return (
     <section
@@ -119,6 +154,18 @@ const Registration = () => {
                   required
                 />
               </fieldset>
+              {/* image field */}
+              <fieldset className="w-full">
+                <legend className="text-sm font-medium text-gray-700 mb-1">
+                  Photo Url
+                </legend>
+                <input
+                  type="photoUrl"
+                  name="photo"
+                  placeholder="Your photo link"
+                  className="w-full border bg-white text-black border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </fieldset>
 
               <button
                 type="submit"
@@ -132,7 +179,7 @@ const Registration = () => {
             <div className="text-center mt-6">
               <p className="text-gray-600 mb-3">Or sign up with</p>
               <div className="flex justify-center gap-4">
-                <button className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition text-sm">
+                <button onClick={handleGoogleLogin} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition text-sm">
                   Google
                 </button>
                 <button className="bg-blue-800 text-white px-4 py-2 rounded hover:bg-blue-900 transition text-sm">
