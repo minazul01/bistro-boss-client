@@ -58,29 +58,31 @@ const Provider = ({ children }) => {
 
   // Auth state change
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       console.log("current User", currentUser);
 
       if (currentUser) {
-        // set token browser per user login
-        const userInfo = {email: currentUser.email};
-        axiosPublic.post('/jwt', userInfo)
-        .then(res => {
-          if(res.data.token){
-             localStorage.setItem('access-token', res.data.token)
+        try {
+          const userInfo = { email: currentUser.email };
+          const res = await axiosPublic.post("/jwt", userInfo);
+          if (res.data.token) {
+            localStorage.setItem("access-token", res.data.token);
           }
-        })
-      }else{
-        // remove item
-        localStorage.removeItem('access-token');
+        } catch (error) {
+          console.error("Error getting token:", error);
+        }
+      } else {
+        localStorage.removeItem("access-token");
       }
 
-      setLoading(false);
+      setLoading(false); // ✅ Waits until token handling is done
     });
 
-    return () => unsubscribe(); //Clean unsubscribe
+    return () => unsubscribe();
   }, [axiosPublic]);
+
+
 
   // Context value
   const info = {

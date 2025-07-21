@@ -14,6 +14,11 @@ import Card from "../Pages/Dashboard/DashboardHome/Card";
 import PrivateRoutes from "../Context/AuthProvider/PrivateRoutes/Private";
 import AllUsers from "../Pages/Dashboard/DashboardAdmin/AllUsers";
 import PrivateAdmin from "../Context/AuthProvider/PrivateRoutes/PrivateAdmin";
+import AdminHome from "../Pages/Dashboard/DashboardAdmin/AdminHome";
+import AddItems from "../Pages/Dashboard/DashboardAdmin/AddItems";
+import ManageItem from "../Pages/Dashboard/DashboardAdmin/MangeItem";
+import UpdateItem from "../Pages/Dashboard/DashboardAdmin/UpdateItem";
+import { param } from "framer-motion/client";
 
 export const router = createBrowserRouter([
   {
@@ -49,22 +54,54 @@ export const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />,
-    children:[
+    children: [
+      // general users pages
       {
-         path: "/dashboard/home",
-         element: <DashboardHome />
+        path: "home", // ✅ no slash
+        element: <DashboardHome />,
       },
       {
-        path: "/dashboard/cart",
-        element: <PrivateRoutes> <Card /> </PrivateRoutes>
+        path: "cart",
+        element: (
+          <PrivateRoutes>
+            <Card />
+          </PrivateRoutes>
+        ),
       },
 
-
-      // admin rool
+      // admin role pages
       {
-       path: "/dashboard/admin/users",
-       element: <PrivateAdmin> <AllUsers /> </PrivateAdmin>
+        path: "admin/users",
+        element: (
+          <PrivateAdmin>
+            <AllUsers />
+          </PrivateAdmin>
+        ),
       },
-    ]
+      {
+        path: "admin/home",
+        element: (
+          <PrivateAdmin>
+            <AdminHome />
+          </PrivateAdmin>
+        ),
+      },
+      {
+        path: "admin/items",
+        element: (
+          <PrivateAdmin>
+            <AddItems />
+          </PrivateAdmin>
+        ),
+      },{
+        path: "admin/manage",
+        element: <PrivateAdmin> <ManageItem /> </PrivateAdmin>
+      },
+      {
+        path: "admin/manage/update_item/:id",
+        element: <PrivateAdmin> <UpdateItem /> </PrivateAdmin>,
+        loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+      }
+    ],
   },
 ]);

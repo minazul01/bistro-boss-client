@@ -72,8 +72,8 @@ const Dashboard = () => {
             {isAdmin ? 
             <>
             <SidebarLink icon={<FaHome />} to="/dashboard/admin/home" label="Admin Home" />
-            <SidebarLink icon={<IoTimeSharp />} to="/dashboard/admin/times" label="Add Times" />
-            <SidebarLink icon={<TbCalendarTime />} to="/dashboard/admin/manage" label="Manage Times" />
+            <SidebarLink icon={<IoTimeSharp />} to="/dashboard/admin/items" label="Add items" />
+            <SidebarLink icon={<TbCalendarTime />} to="/dashboard/admin/manage" label="Manage item" />
             <SidebarLink icon={<FaBook />} to="/dashboard/admin/booking" label="Manage Booking" />
             <SidebarLink icon={<FaUsers />} to="/dashboard/admin/users" label="All Users" />
             

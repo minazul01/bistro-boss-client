@@ -4,6 +4,7 @@ import useAdmin from "../../../Hooks/useAdmin";
 
 const PrivateAdmin = ({children}) => {
     const [isAdmin, isAdminLoading] = useAdmin();
+  
   const { user, loading } = useAuth();
   const location = useLocation();
 
