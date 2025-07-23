@@ -18,7 +18,8 @@ import AdminHome from "../Pages/Dashboard/DashboardAdmin/AdminHome";
 import AddItems from "../Pages/Dashboard/DashboardAdmin/AddItems";
 import ManageItem from "../Pages/Dashboard/DashboardAdmin/MangeItem";
 import UpdateItem from "../Pages/Dashboard/DashboardAdmin/UpdateItem";
-import { param } from "framer-motion/client";
+import Reservation from "../Pages/Dashboard/DashboardHome/Reservation";
+import PaymentHistory from "../Pages/Dashboard/DashboardHome/PaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -67,6 +68,14 @@ export const router = createBrowserRouter([
             <Card />
           </PrivateRoutes>
         ),
+      },
+      {
+        path: "reservation",
+        element: <Reservation />
+      },
+      {
+        path: "payment_history",
+        element: <PaymentHistory />
       },
 
       // admin role pages

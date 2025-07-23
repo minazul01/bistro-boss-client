@@ -42,7 +42,7 @@ const Dashboard = () => {
   );
 
   // admin role
-  const [isAdmin, isAdminLoading] = useAdmin();
+  const [isAdmin] = useAdmin();
  
 
 
@@ -82,7 +82,7 @@ const Dashboard = () => {
             <>
             <SidebarLink icon={<FaHome />} to="/dashboard/home" label="User Home" />
             <SidebarLink icon={<FaCalendar />} to="/dashboard/reservation" label="Reservation" />
-            <SidebarLink icon={<FaPaypal />} to="/dashboard/payment" label="Payment History" />
+            <SidebarLink icon={<FaPaypal />} to="/dashboard/payment_history" label="Payment History" />
             <SidebarLink icon={<FaCalendarPlus />} to="/dashboard/booking" label="My Booking" />
             <SidebarLink
               icon={<FaShoppingCart />}
@@ -106,7 +106,6 @@ const Dashboard = () => {
       {/* Main Content */}
       <main className="flex-1  p-4 bg-gray-50 overflow-y-auto min-h-screen">
         <Outlet />
-        {isAdminLoading && <p>Loading admin status...</p>}
       </main>
     </section>
   );

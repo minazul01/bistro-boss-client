@@ -4,11 +4,12 @@ import useCards from "../../../Hooks/useCards";
 
 import { MdDelete } from "react-icons/md";
 import useAxios from "../../../Hooks/useAxios";
+import { Link } from "react-router-dom";
 
 
 const Card = () => {
   const [card, refetch] = useCards();
-  const totalPrice = card?.reduce?.((sum, item) => sum + item.price, 0) || 0;
+  const totalPrice = card?.reduce((sum, item) => sum + item.price, 0) || 0;
 
   const axiosSecure = useAxios();
   //   delete card item
@@ -45,7 +46,7 @@ const Card = () => {
           Total orders:{card?.length || 0}
         </h3>
         <h3 className="text-[1rem] font-bold">total price: ${totalPrice}</h3>
-        <button className="btn btn-primary">Pay</button>
+        {card?.length && <Link to="/dashboard/reservation"><button className="btn btn-primary">Pay</button></Link>}
       </div>
       <div className="overflow-x-auto w-full">
         <table className="w-full table-auto md:table-fixed text-center">
