@@ -81,7 +81,7 @@ const OurMenu = () => {
                 ))}
               </div>
               <div className="w-full text-center mb-10">
-                <Link to={`/our_shop/${'salad'}`} className="py-2 px-4 bg-white border-b-2 rounded-md uppercase text-black hover:text-yellow-300 hover:bg-black cursor-pointer">
+                <Link to='our_shop' className="py-2 px-4 bg-white border-b-2 rounded-md uppercase text-black hover:text-yellow-300 hover:bg-black cursor-pointer">
                   ORDER YOUR FAVORITE FOOD
                 </Link>
               </div>

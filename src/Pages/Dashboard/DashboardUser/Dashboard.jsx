@@ -2,12 +2,9 @@ import {
   FaHome,
   FaCalendar,
   FaPaypal,
-  FaCalendarPlus,
   FaShoppingCart,
-  FaWindowRestore,
   FaBars,
   FaTimes,
-  FaBook,
   FaUsers,
 } from "react-icons/fa";
 import { TbCalendarTime } from "react-icons/tb";
@@ -60,7 +57,7 @@ const Dashboard = () => {
         }`}
       >
         <div className="py-6 px-6 space-y-5 text-[1rem] uppercase">
-          <Link to='/' className="">
+          <Link to="/" className="">
             <h1 className="text-2xl font-bold uppercase">BISTRO BOSS</h1>
             <h2 className="text-xl font-medium pb-10 uppercase">Restaurant</h2>
           </Link>
@@ -84,11 +81,7 @@ const Dashboard = () => {
                   to="/dashboard/admin/manage"
                   label="Manage item"
                 />
-                <SidebarLink
-                  icon={<FaBook />}
-                  to="/dashboard/admin/booking"
-                  label="Manage Booking"
-                />
+
                 <SidebarLink
                   icon={<FaUsers />}
                   to="/dashboard/admin/users"
@@ -112,19 +105,9 @@ const Dashboard = () => {
                   label="Payment History"
                 />
                 <SidebarLink
-                  icon={<FaCalendarPlus />}
-                  to="/dashboard/booking"
-                  label="My Booking"
-                />
-                <SidebarLink
                   icon={<FaShoppingCart />}
                   to="/dashboard/cart"
                   label={`My Cart (${card?.length || 0})`}
-                />
-                <SidebarLink
-                  icon={<FaWindowRestore />}
-                  to="/dashboard/review"
-                  label="My Review"
                 />
               </>
             ) : (
@@ -145,19 +128,9 @@ const Dashboard = () => {
                   label="Payment History"
                 />
                 <SidebarLink
-                  icon={<FaCalendarPlus />}
-                  to="/dashboard/booking"
-                  label="My Booking"
-                />
-                <SidebarLink
                   icon={<FaShoppingCart />}
                   to="/dashboard/cart"
                   label={`My Cart (${card?.length || 0})`}
-                />
-                <SidebarLink
-                  icon={<FaWindowRestore />}
-                  to="/dashboard/review"
-                  label="My Review"
                 />
               </>
             )}
@@ -165,11 +138,15 @@ const Dashboard = () => {
             <hr className="my-4" />
             {/* same admin and user */}
             <SidebarLink icon={<FaHome />} to="/" label="Home" />
-            <SidebarLink icon={<AiOutlineMenu />} to="/" label="Menu" />
-            <SidebarLink icon={<AiFillShopping />} to="/" label="Shop" />
+            <SidebarLink icon={<AiOutlineMenu />} to="/our_menu" label="Menu" />
+            <SidebarLink
+              icon={<AiFillShopping />}
+              to="/our_shop"
+              label="Shop"
+            />
             <SidebarLink
               icon={<MdOutlineContactPhone />}
-              to="/"
+              to="/contact_us"
               label="Contact"
             />
           </div>
