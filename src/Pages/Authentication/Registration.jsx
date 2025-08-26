@@ -20,7 +20,7 @@ const Registration = () => {
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
     const photo = form.photo.value;
-    console.log(name, photo);
+    // console.log(name, photo);
     // console.log(name, email, password, confirmPassword);
     if (password !== confirmPassword) {
       return alert("Passwords do not match");
@@ -35,7 +35,7 @@ const Registration = () => {
 
     signUpUser(email, password).then((userCredential) => {
       const user = userCredential.user;
-      console.log(user);
+      // console.log(user);
       updateUser(name, photo).then(() => {
         const userInfo = {
           email: email,
@@ -43,7 +43,7 @@ const Registration = () => {
         };
         axiosPublic.post("/users", userInfo).then((res) => {
           if (res.data.insertedId) {
-            console.log('user added to the database')
+            // console.log('user added to the database')
             Swal.fire({
               title: "Drag me!",
               icon: "success",
@@ -67,7 +67,7 @@ const Registration = () => {
           }
          axiosPublic.post('/users', userInfo)
          .then(res => {
-          console.log(res.data)
+          // console.log(res.data)
          })
         });
         navigate('/')

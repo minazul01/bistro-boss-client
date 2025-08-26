@@ -20,11 +20,13 @@ import ManageItem from "../Pages/Dashboard/DashboardAdmin/MangeItem";
 import UpdateItem from "../Pages/Dashboard/DashboardAdmin/UpdateItem";
 import Reservation from "../Pages/Dashboard/DashboardHome/Reservation";
 import PaymentHistory from "../Pages/Dashboard/DashboardHome/PaymentHistory";
+import ErrorPage from "../Component/Error404Pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -109,7 +111,7 @@ export const router = createBrowserRouter([
       {
         path: "admin/manage/update_item/:id",
         element: <PrivateAdmin> <UpdateItem /> </PrivateAdmin>,
-        loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+        loader: ({params}) => fetch(`https://bistro-boss-server-psi-gules.vercel.app/menu/${params.id}`)
       }
     ],
   },

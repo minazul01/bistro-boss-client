@@ -16,7 +16,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
-  console.log(location.state)
+  // console.log(location.state)
   const { signInUser, googleLogin } = useContext(AuthContext);
   // disable login btn
   const [disabled, setDisabled] = useState(true);
@@ -34,7 +34,7 @@ const Login = () => {
     signInUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
+        // console.log(user);
         Swal.fire({
           title: "Login!",
           icon: "success",
@@ -64,14 +64,14 @@ const Login = () => {
   const handleGoogleLogin = () => {
        googleLogin()
        .then((result) => {
-        console.log('user added',result.user)
+        // console.log('user added',result.user)
         const userInfo = {
           name: result?.user?.displayName,
           email: result?.user?.email
         };
         axiosPublic.post('/users', userInfo)
         .then(res => {
-           console.log(res.data);
+          //  console.log(res.data);
         })
        });
        navigate('/')

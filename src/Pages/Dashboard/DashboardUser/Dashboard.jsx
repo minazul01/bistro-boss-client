@@ -14,11 +14,10 @@ import { TbCalendarTime } from "react-icons/tb";
 import { IoTimeSharp } from "react-icons/io5";
 import { MdOutlineContactPhone } from "react-icons/md";
 import { AiFillShopping, AiOutlineMenu } from "react-icons/ai";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import useCards from "../../../Hooks/useCards";
 import { useState } from "react";
 import useAdmin from "../../../Hooks/useAdmin";
-
 
 const Dashboard = () => {
   const [card] = useCards();
@@ -43,9 +42,6 @@ const Dashboard = () => {
 
   // admin role
   const [isAdmin] = useAdmin();
- 
-
-
 
   return (
     <section className="flex flex-col md:flex-row h-screen overflow-hidden">
@@ -64,41 +60,118 @@ const Dashboard = () => {
         }`}
       >
         <div className="py-6 px-6 space-y-5 text-[1rem] uppercase">
-          <h1 className="text-2xl font-bold uppercase">BISTRO BOSS</h1>
-          <h2 className="text-xl font-medium pb-10 uppercase">Restaurant</h2>
+          <Link to='/' className="">
+            <h1 className="text-2xl font-bold uppercase">BISTRO BOSS</h1>
+            <h2 className="text-xl font-medium pb-10 uppercase">Restaurant</h2>
+          </Link>
 
           {/* Sidebar Links */}
           <div className="space-y-4 uppercase">
-            {isAdmin ? 
-            <>
-            <SidebarLink icon={<FaHome />} to="/dashboard/admin/home" label="Admin Home" />
-            <SidebarLink icon={<IoTimeSharp />} to="/dashboard/admin/items" label="Add items" />
-            <SidebarLink icon={<TbCalendarTime />} to="/dashboard/admin/manage" label="Manage item" />
-            <SidebarLink icon={<FaBook />} to="/dashboard/admin/booking" label="Manage Booking" />
-            <SidebarLink icon={<FaUsers />} to="/dashboard/admin/users" label="All Users" />
-            
-            </>
-            :
-            <>
-            <SidebarLink icon={<FaHome />} to="/dashboard/home" label="User Home" />
-            <SidebarLink icon={<FaCalendar />} to="/dashboard/reservation" label="Reservation" />
-            <SidebarLink icon={<FaPaypal />} to="/dashboard/payment_history" label="Payment History" />
-            <SidebarLink icon={<FaCalendarPlus />} to="/dashboard/booking" label="My Booking" />
-            <SidebarLink
-              icon={<FaShoppingCart />}
-              to="/dashboard/cart"
-              label={`My Cart (${card?.length || 0})`}
-            />
-            <SidebarLink icon={<FaWindowRestore />} to="/dashboard/review" label="My Review" />
-            </>
-            }
+            {isAdmin ? (
+              <>
+                <SidebarLink
+                  icon={<FaHome />}
+                  to="/dashboard/admin/home"
+                  label="Admin Home"
+                />
+                <SidebarLink
+                  icon={<IoTimeSharp />}
+                  to="/dashboard/admin/items"
+                  label="Add items"
+                />
+                <SidebarLink
+                  icon={<TbCalendarTime />}
+                  to="/dashboard/admin/manage"
+                  label="Manage item"
+                />
+                <SidebarLink
+                  icon={<FaBook />}
+                  to="/dashboard/admin/booking"
+                  label="Manage Booking"
+                />
+                <SidebarLink
+                  icon={<FaUsers />}
+                  to="/dashboard/admin/users"
+                  label="All Users"
+                />
+                {/* user information */}
+                <hr />
+                <SidebarLink
+                  icon={<FaHome />}
+                  to="/dashboard/home"
+                  label="User Home"
+                />
+                <SidebarLink
+                  icon={<FaCalendar />}
+                  to="/dashboard/reservation"
+                  label="Reservation"
+                />
+                <SidebarLink
+                  icon={<FaPaypal />}
+                  to="/dashboard/payment_history"
+                  label="Payment History"
+                />
+                <SidebarLink
+                  icon={<FaCalendarPlus />}
+                  to="/dashboard/booking"
+                  label="My Booking"
+                />
+                <SidebarLink
+                  icon={<FaShoppingCart />}
+                  to="/dashboard/cart"
+                  label={`My Cart (${card?.length || 0})`}
+                />
+                <SidebarLink
+                  icon={<FaWindowRestore />}
+                  to="/dashboard/review"
+                  label="My Review"
+                />
+              </>
+            ) : (
+              <>
+                <SidebarLink
+                  icon={<FaHome />}
+                  to="/dashboard/home"
+                  label="User Home"
+                />
+                <SidebarLink
+                  icon={<FaCalendar />}
+                  to="/dashboard/reservation"
+                  label="Reservation"
+                />
+                <SidebarLink
+                  icon={<FaPaypal />}
+                  to="/dashboard/payment_history"
+                  label="Payment History"
+                />
+                <SidebarLink
+                  icon={<FaCalendarPlus />}
+                  to="/dashboard/booking"
+                  label="My Booking"
+                />
+                <SidebarLink
+                  icon={<FaShoppingCart />}
+                  to="/dashboard/cart"
+                  label={`My Cart (${card?.length || 0})`}
+                />
+                <SidebarLink
+                  icon={<FaWindowRestore />}
+                  to="/dashboard/review"
+                  label="My Review"
+                />
+              </>
+            )}
 
             <hr className="my-4" />
-             {/* same admin and user */}
+            {/* same admin and user */}
             <SidebarLink icon={<FaHome />} to="/" label="Home" />
             <SidebarLink icon={<AiOutlineMenu />} to="/" label="Menu" />
             <SidebarLink icon={<AiFillShopping />} to="/" label="Shop" />
-            <SidebarLink icon={<MdOutlineContactPhone />} to="/" label="Contact" />
+            <SidebarLink
+              icon={<MdOutlineContactPhone />}
+              to="/"
+              label="Contact"
+            />
           </div>
         </div>
       </aside>

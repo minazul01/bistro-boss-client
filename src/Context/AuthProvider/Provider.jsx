@@ -60,7 +60,7 @@ const Provider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-      console.log("current User", currentUser);
+      // console.log("current User", currentUser);
 
       if (currentUser) {
         try {
@@ -68,6 +68,7 @@ const Provider = ({ children }) => {
           const res = await axiosPublic.post("/jwt", userInfo);
           if (res.data.token) {
             localStorage.setItem("access-token", res.data.token);
+            // console.log(res.data)
           }
         } catch (error) {
           console.error("Error getting token:", error);

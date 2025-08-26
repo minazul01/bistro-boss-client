@@ -54,7 +54,7 @@ const UpdateItem = () => {
       }).then(async (result) => {
         if (result.isConfirmed) {
           const menuRes = await axiosSecure.patch(`/menu/${_id}`, menuItem);
-          console.log(menuRes.data);
+          // console.log(menuRes.data);
           if (menuRes?.data?.modifiedCount > 0) {
             navigate("/dashboard/admin/manage");
             reset();

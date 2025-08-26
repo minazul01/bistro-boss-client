@@ -13,7 +13,7 @@ const AddItems = () => {
   const axiosPublic = useAxiosPublic();
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     const FileList = { image: data.image[0] };
     const res = await axiosPublic.post(imageHostingAPI, FileList, {
       headers: {
